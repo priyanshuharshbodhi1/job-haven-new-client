@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
 import Login from './screens/login/Login';
+import SignUp from './screens/signup/signup';
 
 
 const router = createBrowserRouter([
@@ -10,10 +11,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Login />,
   },
-  // {
-  //   path: "/selectcategory",
-  //   element: <SelectCategory />,
-  // },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
   // {
   //   path: "/notespage",
   //   element: <NotesPage />,
