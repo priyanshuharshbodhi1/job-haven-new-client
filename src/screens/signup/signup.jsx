@@ -5,7 +5,7 @@ const SignupForm = () => {
   return (
     <div>
       <h2>Create an Account</h2>
-      <form method="POST" action={process.env.REACT_APP_BACKEND_URL+"api/signup"}>
+      <form method="POST" action="http://localhost:4000/api/signup">
         <div>
           <label>First Name</label>
           <input
