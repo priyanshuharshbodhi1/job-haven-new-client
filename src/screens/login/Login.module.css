@@ -1,0 +1,100 @@
+
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  
+  .loginSection {
+    width: 55%;
+  }
+  
+  .formSection {
+    margin-left: auto;
+    margin-right: auto;
+    width: 55%;
+  }
+  
+  .image {
+    background-image: url("../../assets/images/main.jpg");
+    background-position: top;
+    width: 45%;
+    height: 100vh;
+    display: inline-block;
+    background-size: cover;
+  }
+  
+  .heading {
+    color: #000;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+  
+  .p {
+    color: #525252;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  
+  .form input {
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+
+  }
+  
+  .inputField {
+    margin-right: 3rem;
+  }
+
+  .form label input {
+    padding: none;
+    width: auto;
+    margin: 0;
+  }
+  
+  .label {
+    color: #525252;
+    font-family: DM Sans;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+  .btn {
+    border-radius: 0.3125rem;
+    background: #ed5353;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    color: #FFF;
+    text-align: center;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .btn:active {
+      transform: scale(0.9);
+  }
+  
+  
+  .link{
+      color: black;
+      text-decoration: none;
+      border-bottom: 1.5px solid black;
+  }
+  

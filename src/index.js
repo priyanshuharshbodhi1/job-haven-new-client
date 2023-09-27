@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
 import Login from './screens/login/Login';
 import SignUp from './screens/signup/signup';
-// import SignUp from './screens/signup/signup';
+import JobFinder from './screens/jobfinder/jobfinder';
 
 
 
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/notespage",
-    // element: <NotesPage />,
+    path: "/jobfinder",
+    element: <JobFinder />,
   },
   // {
   //   path: "/moviespage",
