@@ -12,28 +12,170 @@
   align-items: center;
 }
 
-.logo{
-    color: #fff;
-    
+.logo {
+  color: #fff;
 }
 
 .loginBtn {
-    border-radius: 0.4375rem;
-    border: 1.5px solid #fff;
-    background: #ed5353;
-    padding: 0.5rem;
-    width: 6rem;
-    color: #fff;
-    cursor: pointer;
+  border-radius: 0.4375rem;
+  border: 1.5px solid #fff;
+  background: #ed5353;
+  padding: 0.5rem;
+  width: 6rem;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+}
+
+.registerBtn:active {
+  transform: scale(0.95);
+}
+
+.loginBtn:active {
+  transform: scale(0.95);
 }
 
 .registerBtn {
-    border-radius: 0.4375rem;
-    border: 1.5px solid #fff;
-    color: #ed5353;
-    background-color: #fff;
-    padding: 0.5rem;
-    width: 6rem;
-    margin-left: 2rem;
-    cursor: pointer;
+  border-radius: 0.4375rem;
+  border: 1.5px solid #fff;
+  color: #ed5353;
+  background-color: #fff;
+  padding: 0.5rem;
+  width: 6rem;
+  margin-left: 2rem;
+  cursor: pointer;
+
+}
+
+.searchBarContainer {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
+  margin: 2rem auto;
+  width: 70%;
+  height: max-content;
+  box-sizing: border-box;
+  padding: 0 6rem;
+  padding-bottom: 0.5rem;
+}
+
+.searchBar > input {
+  padding: 0.6rem;
+  padding-left: 2.5rem;
+  margin: 0.5rem auto;
+  width: 100%;
+  border: 1.8px solid #e3e3e3;
+  border-radius: 5px;
+}
+
+.searchBar > input:focus {
+  border-color: #f59595;
+}
+
+.searchBar > input::placeholder {
+  color: #9c9c9c;
+  font-size: 1rem;
+  font-style: normal;
+}
+
+.searchBarInput {
+  background-image: url("../../assets/images/search.svg");
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  background-size: 20px 20px;
+}
+
+.searchBar {
+  position: relative;
+}
+
+.addJobBtn {
+  border-radius: 0.50431rem;
+  background: #ed5353;
+  border: none;
+  color: white;
+  font-weight: 600;
+  height: fit-content;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.addJobBtn:active {
+  transform: scale(0.95);
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropBtn {
+  border-radius: 0.5625rem;
+  border: 1.5px solid #9c9c9c;
+  background: #fff;
+  padding: 0.6rem 1.5rem;
+  color: #9c9c9c;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdownContent {
+  max-height: 200px; /* Set the desired fixed height */
+  overflow-y: auto; /* Add a scrollbar when content overflows */
+  background-color: #f5f5f5; /* Set the background color */
+  border: 1px solid #9c9c9c; /* Add a border for clarity */
+  padding: 10px; /* Add padding to the content */
+  position: absolute;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+
+label input[type="checkbox"]:checked {
+  background-color: orange; /* Change the background color when checked */
+}
+
+.dropdownContent::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+.dropdownContent::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Color of the scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+.dropdownContent::-webkit-scrollbar-track {
+  background-color: #fff;
+  border-radius: 9px;
+}
+
+.checkedSkills span {
+  border-radius: 0.125rem;
+  background: #fee;
+  white-space: nowrap;
+  /* Additional styles for all span elements inside checkedSkills */
+}
+
+.checkedSkills {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.checkedSkill {
+  display: flex;
+  height: max-content;
+}
+
+.selectedSkillSpan {
+  padding: 0.6rem 1.5rem;
+  height: max-content;
+}
+
+.removeSkillBtn {
+  background: #ff6b6b;
+  border: none;
+  color: #454444;
 }
