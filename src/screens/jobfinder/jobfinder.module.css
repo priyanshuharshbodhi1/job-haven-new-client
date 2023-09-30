@@ -1,6 +1,6 @@
 .header {
   background-color: #ed5353;
-  height: 5rem;
+  height: 6rem;
   border-radius: 0 0 2rem 2rem;
 }
 
@@ -25,7 +25,6 @@
   color: #fff;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
-
 }
 
 .registerBtn:active {
@@ -45,7 +44,11 @@
   width: 6rem;
   margin-left: 2rem;
   cursor: pointer;
+}
 
+.secondContainer {
+  margin: 1rem auto;
+  width: 70%;
 }
 
 .searchBarContainer {
@@ -53,12 +56,10 @@
   flex-direction: column;
   background: #fff;
   box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
-  margin: 2rem auto;
-  width: 70%;
+  margin: 1.5rem auto;
   height: max-content;
   box-sizing: border-box;
-  padding: 0 6rem;
-  padding-bottom: 0.5rem;
+  padding: 1rem 6rem;
 }
 
 .searchBar > input {
@@ -124,31 +125,31 @@
 }
 
 .dropdownContent {
-  max-height: 200px; /* Set the desired fixed height */
-  overflow-y: auto; /* Add a scrollbar when content overflows */
-  background-color: #f5f5f5; /* Set the background color */
-  border: 1px solid #9c9c9c; /* Add a border for clarity */
-  padding: 10px; /* Add padding to the content */
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fcb7b7;
+  border: 1px solid #9c9c9c;
+  padding: 10px;
   position: absolute;
   margin-top: 0.5rem;
   border-radius: 8px;
 }
 
 label input[type="checkbox"]:checked {
-  background-color: orange; /* Change the background color when checked */
+  background-color: orange;
 }
 
 .dropdownContent::-webkit-scrollbar {
-  width: 10px; /* Set the width of the scrollbar */
+  width: 10px;
 }
 
 .dropdownContent::-webkit-scrollbar-thumb {
-  background-color: #ccc; /* Color of the scrollbar thumb */
-  border-radius: 5px; /* Rounded corners for the thumb */
+  background-color: #f87474;
+  border-radius: 5px;
 }
 
 .dropdownContent::-webkit-scrollbar-track {
-  background-color: #fff;
+  background-color: #fcb7b7;
   border-radius: 9px;
 }
 
@@ -156,7 +157,6 @@ label input[type="checkbox"]:checked {
   border-radius: 0.125rem;
   background: #fee;
   white-space: nowrap;
-  /* Additional styles for all span elements inside checkedSkills */
 }
 
 .checkedSkills {
@@ -178,4 +178,76 @@ label input[type="checkbox"]:checked {
   background: #ff6b6b;
   border: none;
   color: #454444;
+}
+
+/* job list */
+
+.jobListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jobList {
+  background: #fff;
+  box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4rem;
+}
+
+.salaryAndLocation {
+  color: #9c9c9c;
+  font-size: 0.85rem;
+  align-items: center;
+}
+
+.salary,
+.time {
+  margin-right: 1rem;
+}
+
+.timeAndRemote {
+  color: #ed5353;
+  font-size: 0.85rem;
+}
+
+.viewDetailsBtn {
+  border-radius: 0.3rem;
+  background: #ed5353;
+  border: none;
+  color: white;
+  font-weight: 500;
+  height: fit-content;
+  padding: 0.3rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.viewDetailsBtn:active {
+  transform: scale(0.95);
+}
+
+.logo {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-right: 1.5rem;
+  background-size: cover;
+  background-position: top;
+  border-radius: 5px;
+}
+
+.skills{
+  display: flex;
+  gap: .5rem;
+  margin-left: auto;
+}
+
+.skill {
+  border-radius: 0.08956rem;
+  background: #fee;
+  padding: 5px 15px;
+  
 }

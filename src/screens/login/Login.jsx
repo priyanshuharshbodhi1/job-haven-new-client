@@ -13,7 +13,7 @@ const Login = () => {
             method="POST"
             action="http://localhost:4000/api/login"
           >
-            <div style={{marginTop:"1rem",marginBottom:"1rem"}}>
+            <div style={{marginTop:"1rem",marginBottom:"1rem", display:"flex", flexDirection:"column"}}>
               <div style={{marginBottom:".8rem"}} className={styles.inputField}>
                 <input type="email" name="email" placeholder="Email" required />
               </div>

@@ -1,0 +1,101 @@
+.mainContainer {
+  display: flex;
+  min-height: 100vh;
+}
+
+.formSection {
+  flex: 1;
+  padding: 0.5rem 4rem;
+}
+
+.formSection input {
+  border-radius: 0.28769rem;
+  border: 1.841px solid #c2c2c2;
+  background: #fff;
+  width: 22rem;
+  padding: 3px;
+}
+
+.formSection input[type="file"] {
+  border-radius: 0.28769rem;
+  border: 1.841px solid #c2c2c2;
+  background: #fff;
+  width: 22rem;
+  padding: 3px;
+}
+
+.formSection textarea {
+  border-radius: 0.28769rem;
+  border: 1.841px solid #c2c2c2;
+  background: #fff;
+  width: 22rem;
+  padding: 3px;
+  min-height: 5rem;
+  resize: none;
+}
+
+.formSection select {
+  border-radius: 0.28769rem;
+  border: 1.841px solid #c2c2c2;
+  background: #fff;
+  width: 18rem;
+  padding: 3px;
+  color: #757373;
+}
+
+.sideImage {
+  background-image: url("../../assets/images/addjobimage.png");
+  background-position: center;
+  width: 45%;
+  min-height: 100vh;
+  display: inline-block;
+  background-size: cover;
+  position: relative;
+}
+
+.textOverlay {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: 500;
+  font-size: 2rem;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+form div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addJobBtn {
+  border-radius: 0.25rem;
+  background: #ed5353;
+  border: none;
+  padding: 0.5rem 1.3rem;
+  color: #fff;
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 0.5rem;
+}
+
+.addJobBtn:active {
+  transform: scale(0.9);
+}
+
