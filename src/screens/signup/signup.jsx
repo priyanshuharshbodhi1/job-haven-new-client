@@ -20,7 +20,6 @@ const SignupForm = () => {
                 name="firstName"
                 placeholder="First Name"
                 required
-                
               />
             </div>
             <div className={styles.inputField}>
@@ -43,7 +42,14 @@ const SignupForm = () => {
               />
             </div>
             <div>
-              <label className={styles.label}>
+              <label className={styles.label} style={{ display: "flex" }}>
+                <input type="checkbox" name="recruiter" />
+                <span style={{ marginLeft: "4px" }}>Are you a Recruiter?</span>
+              </label>
+            </div>
+
+            <div>
+              <label className={styles.label} style={{ display: "flex" }}>
                 <input type="checkbox" required />
                 <span style={{ marginLeft: "4px" }}>
                   By creating an account, I agree to our terms of use and

@@ -55,6 +55,22 @@ function Jobfinder() {
       });
   }, []);
 
+  useEffect(() => {
+
+    
+    axios
+      .get("http://localhost:4000/api/isloggedin", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setIsLoggedIn(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching job data:", error);
+      });
+  }, []);
+
   const toggleSkill = (skill) => {
     if (selectedSkills.includes(skill)) {
       setSelectedSkills(selectedSkills.filter((s) => s !== skill));
@@ -91,7 +107,7 @@ function Jobfinder() {
             {isLoggedIn ? (
               <>
                 <button className={styles.logout}>Logout</button>
-                <span>Hello User</span> {/* Replace with user's name */}
+                <span>Hello User</span> 
               </>
             ) : (
               <>
