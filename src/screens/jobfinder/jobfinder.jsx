@@ -7,6 +7,9 @@ function Jobfinder() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isRecruiter, setIsRecruiter] = useState(false);
+  const [user, setUser] = useState({ name: "" });
+
   const skills = [
     "Front End",
     "Back End",
@@ -56,20 +59,43 @@ function Jobfinder() {
   }, []);
 
   useEffect(() => {
-
-    
     axios
       .get("http://localhost:4000/api/isloggedin", {
         withCredentials: true,
       })
       .then((response) => {
-        setIsLoggedIn(response.data);
+        setIsLoggedIn(response.data.isLoggedIn);
+        setUser(response.data.firstName);
         // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching job data:", error);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/isrecruiter", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setIsRecruiter(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching job data:", error);
+      });
+  }, []);
+
+  //greeting to the user or recruiter
+  let greeting = "";
+  if (isLoggedIn) {
+    if (isRecruiter) {
+      greeting = "Hello Recruiter!";
+    } else {
+      greeting = `Hello ${user}!`;
+    }
+  }
 
   const toggleSkill = (skill) => {
     if (selectedSkills.includes(skill)) {
@@ -104,10 +130,10 @@ function Jobfinder() {
             JobHaven
           </div>
           <div style={{ display: "flex" }}>
-            {isLoggedIn ? (
+          {isLoggedIn ? (
               <>
-                <button className={styles.logout}>Logout</button>
-                <span>Hello User</span> 
+                <button className={styles.loginBtn}>Logout</button>
+                <span>{greeting}</span>
               </>
             ) : (
               <>
@@ -247,20 +273,18 @@ function Jobfinder() {
                   }}
                 >
                   <div className={styles.skills}>
-                    {job.skillsRequired
-                      .split(",")
-                      .map((skill) => (
-                        <span key={skill.trim()} className={styles.skill}>
-                          {skill
-                            .trim()
-                            .split(" ")
-                            .map(
-                              (word) =>
-                                word.charAt(0).toUpperCase() + word.slice(1)
-                            )
-                            .join(" ")}
-                        </span>
-                      ))}
+                    {job.skillsRequired.split(",").map((skill) => (
+                      <span key={skill.trim()} className={styles.skill}>
+                        {skill
+                          .trim()
+                          .split(" ")
+                          .map(
+                            (word) =>
+                              word.charAt(0).toUpperCase() + word.slice(1)
+                          )
+                          .join(" ")}
+                      </span>
+                    ))}
                   </div>
                   <button className={styles.viewDetailsBtn}>
                     View Details
