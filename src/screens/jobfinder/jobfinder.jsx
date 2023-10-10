@@ -64,7 +64,7 @@ function Jobfinder() {
       })
       .then((response) => {
         setIsLoggedIn(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching job data:", error);
