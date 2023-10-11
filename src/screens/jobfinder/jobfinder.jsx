@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./jobfinder.module.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link} from "react-router-dom";  //, useHistory 
 import axios from "axios";
 import Cookies from "js-cookie";
 

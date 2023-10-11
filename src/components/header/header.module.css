@@ -1,0 +1,50 @@
+/* Header Styles */
+.header {
+    background-color: #ed5353;
+    height: 6rem;
+    border-radius: 0 0 2rem 2rem;
+  }
+  
+  .headerItems {
+    display: flex;
+    justify-content: space-between;
+    margin: auto 5rem;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #fff;
+  }
+  
+  .loginBtn {
+    border-radius: 0.4375rem;
+    border: 1.5px solid #fff;
+    background: #ed5353;
+    padding: 0.5rem;
+    width: 6rem;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .registerBtn:active {
+    transform: scale(0.95);
+  }
+  
+  .loginBtn:active {
+    transform: scale(0.95);
+  }
+  
+  .registerBtn {
+    border-radius: 0.4375rem;
+    border: 1.5px solid #fff;
+    color: #ed5353;
+    background-color: #fff;
+    padding: 0.5rem;
+    width: 6rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
+  
+  

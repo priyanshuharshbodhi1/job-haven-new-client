@@ -6,6 +6,7 @@ import Login from './screens/login/Login';
 import SignUp from './screens/signup/signup';
 import JobFinder from './screens/jobfinder/jobfinder';
 import AddJob from "./screens/addjob/addjob";
+import ViewJob from './screens/viewjob/viewjob';
 
 
 
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
     path: "/addjob",
     element: <AddJob />,
   },
+  {
+    path: "/viewjob",
+    element: <ViewJob />,
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
