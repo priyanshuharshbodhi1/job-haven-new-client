@@ -113,16 +113,16 @@ function Jobfinder() {
       });
   };
 
-  //greeting to the user or recruiter
-  let greeting = "";
+  // //greeting to the user or recruiter
+  // let greeting = "";
 
-  if (isLoggedIn) {
-    if (isRecruiter) {
-      greeting = `Hello Recruiter!`; //"Hello Recruiter!";
-    } else {
-      greeting = `Hello ${user}!`;
-    }
-  }
+  // if (isLoggedIn) {
+  //   if (isRecruiter) {
+  //     greeting = `Hello Recruiter!`; //"Hello Recruiter!";
+  //   } else {
+  //     greeting = `Hello ${user}!`;
+  //   }
+  // }
 
   const toggleSkill = (skill) => {
     if (selectedSkills.includes(skill)) {
@@ -151,34 +151,12 @@ function Jobfinder() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerItems}>
-          <div className={styles.logo} style={{ fontSize: "1.4rem" }}>
-            JobHaven
-          </div>
-          <div style={{ display: "flex" }}>
-            {isLoggedIn ? (
-              <div
-                style={{ display: "flex", gap: "1rem", alignItems: "center" }}
-              >
-                <button className={styles.loginBtn} onClick={handleLogout}>
-                  Logout
-                </button>
-                <span style={{ color: "white" }}>{greeting}</span>
-              </div>
-            ) : (
-              <>
-                <Link to="/">
-                  <button className={styles.loginBtn}>Login</button>
-                </Link>
-                <Link to="/signup">
-                  <button className={styles.registerBtn}>Register</button>
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
+      <Header
+        isLoggedIn={isLoggedIn}
+        isRecruiter={isRecruiter}
+        user={user}
+        handleLogout={handleLogout}
+      />
       <div className={styles.secondContainer}>
         <div className={styles.searchBarContainer}>
           <div className={styles.searchBar}>
