@@ -109,6 +109,30 @@
   transform: scale(0.95);
 }
 
+.addJobContainer {
+  position: relative;
+}
+
+.recruiterMessage {
+  position: absolute;
+  top: -35px; /* Adjust this value to position the tooltip */
+  left: 50%; /* Position the tooltip in the center horizontally */
+  background: rgb(71, 71, 71); /* Background color */
+  color: white;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1;
+  display: block;
+  width: max-content; /* Adjust the width to fit the content */
+  transform: translateX(-50%); /* Center the tooltip horizontally */
+  opacity: 1;
+  transition: opacity 0.3s;
+  white-space: nowrap; /* Ensure the text stays on one line */
+}
+
+
+
 .checkboxContainer {
   display: flex;
   flex-direction: column;

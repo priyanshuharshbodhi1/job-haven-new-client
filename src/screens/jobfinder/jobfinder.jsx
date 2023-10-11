@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./jobfinder.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -10,6 +10,7 @@ function Jobfinder() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRecruiter, setIsRecruiter] = useState(false);
   const [user, setUser] = useState({ name: "" });
+  const [showRecruiterMessage, setShowRecruiterMessage] = useState(false);
 
   const skills = [
     "Front End",
@@ -44,10 +45,8 @@ function Jobfinder() {
     "Artificial Intelligence",
     "Cloud Computing",
   ];
-
-  const dropdownRef = useRef(null);
-
   const [jobData, setJobData] = useState([]);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     axios
@@ -83,7 +82,11 @@ function Jobfinder() {
         withCredentials: true,
       })
       .then((response) => {
-        setIsRecruiter(response.data);
+        if (response.data.isRecruiter === true) {
+          setIsRecruiter(true);
+        } else {
+          setIsRecruiter(false);
+        }
         console.log(response.data);
       })
       .catch((error) => {
@@ -91,14 +94,17 @@ function Jobfinder() {
       });
   }, []);
 
+  // const history = useHistory();
+
   const handleLogout = () => {
     axios
-      .post("http://localhost:4000/api/logout", null, { withCredentials: true }) // Passing null for the request body
+      .post("http://localhost:4000/api/logout", null, { withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
           Cookies.remove("jwt");
           setIsLoggedIn(false);
           console.log("User is logged out");
+          // history.push("/login"); // Navigate to /login
         }
       })
       .catch((error) => {
@@ -111,7 +117,7 @@ function Jobfinder() {
 
   if (isLoggedIn) {
     if (isRecruiter) {
-      greeting = `Hello ${user}!`; //"Hello Recruiter!";
+      greeting = `Hello Recruiter!`; //"Hello Recruiter!";
     } else {
       greeting = `Hello ${user}!`;
     }
@@ -244,14 +250,43 @@ function Jobfinder() {
                 </div>
               ))}
             </div>
-            <Link to="/addjob">
-              <button class={styles.addJobBtn}>+Add Job</button>
-            </Link>
+            <div>
+              <div>
+                {isRecruiter ? ( // Display the "Add Job" button
+                  <Link to="/addjob">
+                    <button className={styles.addJobBtn}>+Add Job</button>
+                  </Link>
+                ) : (
+                  <div
+                    className={styles.addJobContainer}
+                    onMouseEnter={() => setShowRecruiterMessage(true)}
+                    onMouseLeave={() => setShowRecruiterMessage(false)}
+                  >
+                    <button
+                      className={styles.addJobBtn}
+                      style={{
+                        backgroundColor: "#9c9c9c",
+                        cursor: "not-allowed",
+                      }}
+                    >
+                      +Add Job
+                    </button>
+                    {showRecruiterMessage && (
+                      <div className={styles.recruiterMessage}>
+                        Only recruiters can add a job on JobHaven
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles.jobListContainer}>
           {jobData.length === 0 ? ( // Check if jobData is empty
-            <p className={styles.noJobPara}>Sorry, no jobs available for the skills you selected!</p>
+            <p className={styles.noJobPara}>
+              Sorry, no jobs available for the skills you selected!
+            </p>
           ) : (
             jobData.map((job) => (
               <div key={job._id} className={styles.jobList}>
