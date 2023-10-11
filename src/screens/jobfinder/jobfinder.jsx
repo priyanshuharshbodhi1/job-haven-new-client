@@ -26,6 +26,7 @@ function Jobfinder() {
     "Vue.js",
     "Ruby on Rails",
     "PHP",
+    "Web",
     "C#",
     "DevOps",
     "AWS",
@@ -50,14 +51,16 @@ function Jobfinder() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/joblist")
+      .get("http://localhost:4000/api/joblist", {
+        params: { selectedSkills: selectedSkills.join(",") }, // Send selected skills as a comma-separated string
+      })
       .then((response) => {
         setJobData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching job data:", error);
       });
-  }, []);
+  }, [selectedSkills]);
 
   useEffect(() => {
     axios
@@ -108,7 +111,7 @@ function Jobfinder() {
 
   if (isLoggedIn) {
     if (isRecruiter) {
-      greeting = "Hello Recruiter!";
+      greeting = `Hello ${user}!`; //"Hello Recruiter!";
     } else {
       greeting = `Hello ${user}!`;
     }
@@ -148,12 +151,14 @@ function Jobfinder() {
           </div>
           <div style={{ display: "flex" }}>
             {isLoggedIn ? (
-              <>
+              <div
+                style={{ display: "flex", gap: "1rem", alignItems: "center" }}
+              >
                 <button className={styles.loginBtn} onClick={handleLogout}>
                   Logout
                 </button>
-                <span>{greeting}</span>
-              </>
+                <span style={{ color: "white" }}>{greeting}</span>
+              </div>
             ) : (
               <>
                 <Link to="/">
@@ -245,9 +250,10 @@ function Jobfinder() {
           </div>
         </div>
         <div className={styles.jobListContainer}>
-          {jobData
-            // .sort(() => Math.random() - .5) // Shuffle the array
-            .map((job) => (
+          {jobData.length === 0 ? ( // Check if jobData is empty
+            <p className={styles.noJobPara}>Sorry, no jobs available for the skills you selected!</p>
+          ) : (
+            jobData.map((job) => (
               <div key={job._id} className={styles.jobList}>
                 <div className={styles.leftSide} style={{ display: "flex" }}>
                   <div
@@ -310,7 +316,8 @@ function Jobfinder() {
                   </button>
                 </div>
               </div>
-            ))}
+            ))
+          )}
         </div>
       </div>
     </div>
