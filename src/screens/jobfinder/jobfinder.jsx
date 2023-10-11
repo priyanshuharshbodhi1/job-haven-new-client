@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Header from "../../components/header/header.jsx";
 import styles from "./jobfinder.module.css";
 import { Link} from "react-router-dom";  //, useHistory 
 import axios from "axios";
