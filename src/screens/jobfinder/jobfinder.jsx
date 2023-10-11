@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./jobfinder.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function Jobfinder() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -87,8 +88,24 @@ function Jobfinder() {
       });
   }, []);
 
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:4000/api/logout", null, { withCredentials: true }) // Passing null for the request body
+      .then((response) => {
+        if (response.status === 200) {
+          Cookies.remove("jwt");
+          setIsLoggedIn(false);
+          console.log("User is logged out");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during logout:", error);
+      });
+  };
+
   //greeting to the user or recruiter
   let greeting = "";
+
   if (isLoggedIn) {
     if (isRecruiter) {
       greeting = "Hello Recruiter!";
@@ -130,9 +147,11 @@ function Jobfinder() {
             JobHaven
           </div>
           <div style={{ display: "flex" }}>
-          {isLoggedIn ? (
+            {isLoggedIn ? (
               <>
-                <button className={styles.loginBtn}>Logout</button>
+                <button className={styles.loginBtn} onClick={handleLogout}>
+                  Logout
+                </button>
                 <span>{greeting}</span>
               </>
             ) : (
