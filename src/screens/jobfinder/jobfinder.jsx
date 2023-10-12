@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Header from "../../components/header/header.jsx";
 import styles from "./jobfinder.module.css";
-import { Link} from "react-router-dom";  //, useHistory 
+import { Link } from "react-router-dom"; //, useHistory
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -113,7 +113,7 @@ function Jobfinder() {
       });
   };
 
-  // //greeting to the user or recruiter
+  //greeting to the user or recruiter
   // let greeting = "";
 
   // if (isLoggedIn) {
@@ -325,9 +325,24 @@ function Jobfinder() {
                       </span>
                     ))}
                   </div>
-                  <button className={styles.viewDetailsBtn}>
-                    View Details
-                  </button>
+                  <div>
+                    {isRecruiter && ( 
+                      <button
+                        style={{
+                          marginRight: ".5rem",
+                          background: "#fff",
+                          color: "#ed5353",
+                          border: " 1.5px solid #ed5353",
+                        }}
+                        className={styles.viewDetailsBtn}
+                      >
+                        Edit Job
+                      </button>
+                    )}
+                    <button className={styles.viewDetailsBtn}>
+                      View Details
+                    </button>
+                  </div>
                 </div>
               </div>
             ))

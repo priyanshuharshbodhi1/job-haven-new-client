@@ -1,3 +1,12 @@
+.container{
+  box-sizing: border-box;
+}
+
+button{
+  box-sizing: border-box;
+
+}
+
 .header {
   background-color: #ed5353;
   height: 6rem;
@@ -244,7 +253,7 @@ label input[type="checkbox"]:checked {
 .viewDetailsBtn {
   border-radius: 0.3rem;
   background: #ed5353;
-  border: none;
+  border: 1.5px solid #ed5353;
   color: white;
   font-weight: 500;
   height: fit-content;

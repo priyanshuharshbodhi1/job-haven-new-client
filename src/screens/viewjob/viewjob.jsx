@@ -66,7 +66,7 @@ function ViewJob() {
       />
 
       <div className={styles.title}>
-        <h1>Your Title Here</h1>
+        <h3>Your Title Here</h3>
       </div>
 
       <div className={styles.description}>
