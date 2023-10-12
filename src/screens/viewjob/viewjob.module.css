@@ -1,22 +1,86 @@
 .mainContainer {
   background: #ffefef;
   min-height: 100vh;
+  color: #595959;
+  font-size: 0.9rem;
+}
+
+.container {
+  background: #ffefef;
 }
 
 .title {
   background: #fff;
   box-shadow: 0px 4px 23px 2px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 70%;
   text-align: center;
-  margin: 1.5rem auto;
-  padding: .3rem 1rem;
+  margin: 1.2rem auto;
+  padding: 0.1rem 3rem;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.26rem;
+  font-weight: 500;
 }
 
 .description {
   background: #fff;
   box-shadow: 0px 4px 23px 2px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  margin: 1rem auto;
-  padding: .3rem 1rem;
+  width: 70%;
+  margin: auto;
+  padding: 3rem;
+  /* margin-bottom: ; */
+}
 
+.viewDetailsBtn {
+    border-radius: 0.3rem;
+    background: #ed5353;
+    border: 1.5px solid #ed5353;
+    color: white;
+    font-weight: 500;
+    height: fit-content;
+    padding: 0.3rem 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+  
+  .viewDetailsBtn:active {
+    transform: scale(0.95);
+  }
+  
+
+.typeAndTime {
+  display: flex;
+  color: #999;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.8rem;
+  gap: 0.7rem;
+  text-transform: capitalize;
+}
+
+.mainTitle {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.location {
+  color: #ed5353;
+}
+
+.salary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.skillItem {
+  background-color: #ffefef;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-right: 10px;
 }

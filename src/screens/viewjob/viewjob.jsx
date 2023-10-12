@@ -3,15 +3,17 @@ import Header from "../../components/header/header.jsx";
 import styles from "./viewjob.module.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-// import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import stipendImage from "../../assets/images/stipend.svg";
 
 function ViewJob() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRecruiter, setIsRecruiter] = useState(false);
   const [user, setUser] = useState({ name: "" });
+  const [jobDetails, setJobDetails] = useState(null);
+  const { jobId } = useParams(); // Get the job ID from the route parameters
 
   useEffect(() => {
-    // Check login status and user role (recruiter/other user)
     axios
       .get("http://localhost:4000/api/isloggedin", {
         withCredentials: true,
@@ -38,7 +40,16 @@ function ViewJob() {
       .catch((error) => {
         console.error("Error checking user role:", error);
       });
-  }, []);
+
+    axios
+      .get(`http://localhost:4000/api/jobdetails/${jobId}`)
+      .then((response) => {
+        setJobDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching job details:", error);
+      });
+  }, [jobId]);
 
   const handleLogout = () => {
     axios
@@ -48,7 +59,6 @@ function ViewJob() {
           Cookies.remove("jwt");
           setIsLoggedIn(false);
           console.log("User is logged out");
-          // history.push("/login"); // Navigate to /login
         }
       })
       .catch((error) => {
@@ -65,13 +75,81 @@ function ViewJob() {
         handleLogout={handleLogout}
       />
 
-      <div className={styles.title}>
-        <h3>Your Title Here</h3>
-      </div>
+      {jobDetails ? (
+        <div className={styles.container}>
+          <div className={styles.title}>
+            <p>
+              {jobDetails.jobPosition} {jobDetails.jobType}{" "}
+              {jobDetails.remoteOffice} job/internship at{" "}
+              {jobDetails.companyName}
+            </p>
+          </div>
 
-      <div className={styles.description}>
-        <p>Your Description Here</p>
-      </div>
+          <div className={styles.description}>
+            <div className={styles.typeAndTime}>
+              <div className={styles.jobType}>{jobDetails.jobType}</div>
+              <div className={styles.remoteOffice}>
+                {jobDetails.remoteOffice}
+              </div>
+            </div>
+            <div style={{display:"flex", justifyContent:"space-between"}}>
+              <div className={styles.mainTitle}>{jobDetails.jobPosition}</div>
+              {isRecruiter && (
+                      <button
+                        style={{
+                          marginRight: ".5rem",
+                          background: "#fff",
+                          color: "#ed5353",
+                          border: " 1.5px solid #ed5353",
+                        }}
+                        className={styles.viewDetailsBtn}
+                      >
+                        Edit Job
+                      </button>
+                    )}
+            </div>
+            <div className={styles.location}>{jobDetails.location}</div>
+            <br />
+            <div className={styles.stipendAndDuration}>
+              <div className={styles.salary}>
+                <div className={styles.stipendImage}>
+                  <img src={stipendImage} alt="Stipend Icon" />
+                </div>
+                <div>
+                  <span>&#8377;</span>&nbsp;{jobDetails.monthlySalary}/month
+                </div>
+              </div>
+              <div className={styles.duration}>{jobDetails.duration}</div>
+            </div>
+            <div className={styles.companyDescription}>
+              <h4>About Company</h4>
+              {jobDetails.companyDescription}
+            </div>
+            <div className={styles.jobDescription}>
+              <h4>About the job/internship</h4>
+              {jobDetails.jobDescription}
+            </div>
+            <div className={styles.skillRequired}>
+              <h4>Skill(s) required</h4>
+              {jobDetails.skillsRequired.split(",").map((skill, index) => (
+                <span className={styles.skillItem} key={index}>
+                  {skill.trim()}
+                </span>
+              ))}
+            </div>
+
+            {jobDetails.additionalInfo &&
+              jobDetails.additionalInfo.trim() !== "" && (
+                <div className={styles.additionalInformation}>
+                  <h4>Additional Information</h4>
+                  {jobDetails.additionalInfo}
+                </div>
+              )}
+          </div>
+        </div>
+      ) : (
+        <p style={{ margin: "2rem auto" }}>Loading job details...</p>
+      )}
     </div>
   );
 }

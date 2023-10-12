@@ -326,7 +326,7 @@ function Jobfinder() {
                     ))}
                   </div>
                   <div>
-                    {isRecruiter && ( 
+                    {isRecruiter && (
                       <button
                         style={{
                           marginRight: ".5rem",
@@ -339,9 +339,11 @@ function Jobfinder() {
                         Edit Job
                       </button>
                     )}
-                    <button className={styles.viewDetailsBtn}>
-                      View Details
-                    </button>
+                    <Link to={`/viewjob/${job._id}`}>
+                      <button className={styles.viewDetailsBtn}>
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
