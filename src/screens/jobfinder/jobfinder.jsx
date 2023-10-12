@@ -12,6 +12,7 @@ function Jobfinder() {
   const [isRecruiter, setIsRecruiter] = useState(false);
   const [user, setUser] = useState({ name: "" });
   const [showRecruiterMessage, setShowRecruiterMessage] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   const skills = [
     "Front End",
@@ -64,6 +65,22 @@ function Jobfinder() {
 
   useEffect(() => {
     axios
+      .get("http://localhost:4000/api/joblist", {
+        params: { selectedSkills: selectedSkills.join(",") },
+      })
+      .then((response) => {
+        const filteredJobs = response.data.filter((job) =>
+          job.jobPosition.toLowerCase().includes(searchInput.toLowerCase())
+        );
+        setJobData(filteredJobs);
+      })
+      .catch((error) => {
+        console.error("Error fetching job data:", error);
+      });
+  }, [selectedSkills, searchInput]);
+
+  useEffect(() => {
+    axios
       .get("http://localhost:4000/api/isloggedin", {
         withCredentials: true,
       })
@@ -95,6 +112,10 @@ function Jobfinder() {
       });
   }, []);
 
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
   // const history = useHistory();
 
   const handleLogout = () => {
@@ -112,17 +133,6 @@ function Jobfinder() {
         console.error("Error during logout:", error);
       });
   };
-
-  //greeting to the user or recruiter
-  // let greeting = "";
-
-  // if (isLoggedIn) {
-  //   if (isRecruiter) {
-  //     greeting = `Hello Recruiter!`; //"Hello Recruiter!";
-  //   } else {
-  //     greeting = `Hello ${user}!`;
-  //   }
-  // }
 
   const toggleSkill = (skill) => {
     if (selectedSkills.includes(skill)) {
@@ -164,6 +174,8 @@ function Jobfinder() {
               type="search"
               className={styles.searchBarInput}
               placeholder="Type any job title"
+              value={searchInput}
+              onChange={handleSearchInputChange}
             />
           </div>
           <div
@@ -223,6 +235,7 @@ function Jobfinder() {
                   <button
                     className={styles.removeSkillBtn}
                     onClick={() => removeSkill(skill)}
+                    style={{ cursor: "pointer" }}
                   >
                     &#10006; {/* Unicode character for 'x' */}
                   </button>
@@ -325,7 +338,7 @@ function Jobfinder() {
                       </span>
                     ))}
                   </div>
-                  <div>
+                  <div style={{ marginLeft: "auto" }}>
                     {isRecruiter && (
                       <button
                         style={{
