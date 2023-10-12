@@ -43,7 +43,7 @@ function AddJob() {
               name="monthlySalary"
               placeholder="Enter amount in rupees"
               inputMode="numeric"
-              max="10000000"
+              max="100000000"
               required
             />
           </div>
