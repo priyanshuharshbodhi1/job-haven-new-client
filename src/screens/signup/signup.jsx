@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "./signup.module.css";
+const { REACT_APP_BACKEND_URL } = process.env;
+// const dotenv = require("dotenv");
+// dotenv.config()
+
 
 const SignupForm = () => {
   return (
@@ -12,7 +16,7 @@ const SignupForm = () => {
           <form
             className={styles.form}
             method="POST"
-            action="http://localhost:4000/api/signup"
+            action={REACT_APP_BACKEND_URL +"/api/signup"}
           >
             <div className={styles.inputField}>
               <input

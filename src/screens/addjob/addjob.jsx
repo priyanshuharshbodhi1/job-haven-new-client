@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./addjob.module.css";
 
+
 function AddJob() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.formSection}>
         <form
-          action="http://localhost:4000/api/jobpost"
+          action={process.env.REACT_APP_API_URL + "/api/jobpost"}
           method="POST"
           style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}
         >
