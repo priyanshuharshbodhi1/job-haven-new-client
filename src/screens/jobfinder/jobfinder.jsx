@@ -50,9 +50,11 @@ function Jobfinder() {
   const [jobData, setJobData] = useState([]);
   const dropdownRef = useRef(null);
 
+  // {`${process.env.REACT_APP_API_BASE_URL}/api/login`}
+
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/joblist", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/joblist`, {
         params: { selectedSkills: selectedSkills.join(",") }, // Send selected skills as a comma-separated string
       })
       .then((response) => {
@@ -65,7 +67,7 @@ function Jobfinder() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/joblist", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/joblist`, {
         params: { selectedSkills: selectedSkills.join(",") },
       })
       .then((response) => {
@@ -81,7 +83,7 @@ function Jobfinder() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/isloggedin", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/isloggedin`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -96,7 +98,7 @@ function Jobfinder() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/isrecruiter", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/isrecruiter`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -120,7 +122,7 @@ function Jobfinder() {
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:4000/api/logout", null, { withCredentials: true })
+      .post(`${process.env.REACT_APP_API_BASE_URL}/api/logout`, null, { withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
           Cookies.remove("jwt");

@@ -15,7 +15,7 @@ function ViewJob() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/isloggedin", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/isloggedin`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -27,7 +27,7 @@ function ViewJob() {
       });
 
     axios
-      .get("http://localhost:4000/api/isrecruiter", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/isrecruiter`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -42,7 +42,7 @@ function ViewJob() {
       });
 
     axios
-      .get(`http://localhost:4000/api/jobdetails/${jobId}`)
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/jobdetails/${jobId}`)
       .then((response) => {
         setJobDetails(response.data);
       })
@@ -51,9 +51,12 @@ function ViewJob() {
       });
   }, [jobId]);
 
+  
+
+
   const handleLogout = () => {
     axios
-      .post("http://localhost:4000/api/logout", null, { withCredentials: true })
+      .post(`${process.env.REACT_APP_API_BASE_URL}/api/logout`, null, { withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
           Cookies.remove("jwt");

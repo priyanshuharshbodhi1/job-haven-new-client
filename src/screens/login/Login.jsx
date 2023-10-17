@@ -11,7 +11,7 @@ const Login = () => {
           <form
             className={styles.form}
             method="POST"
-            action="http://localhost:4000/api/login"
+            action={`${process.env.REACT_APP_API_BASE_URL}/api/login`}
           >
             <div style={{marginTop:"1rem",marginBottom:"1rem", display:"flex", flexDirection:"column"}}>
               <div style={{marginBottom:".8rem"}} className={styles.inputField}>

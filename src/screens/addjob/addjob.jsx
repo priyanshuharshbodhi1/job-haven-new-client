@@ -7,7 +7,7 @@ function AddJob() {
     <div className={styles.mainContainer}>
       <div className={styles.formSection}>
         <form
-          action={process.env.REACT_APP_API_URL + "/api/jobpost"}
+          action={`${process.env.REACT_APP_API_BASE_URL}/api/jobpost`}
           method="POST"
           style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}
         >
